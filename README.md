@@ -30,7 +30,7 @@ Training of Fast BSUV-Net 2.0 on test_dataset:
 
 These codes will save the perfomance of trained algorithm on the test dataset to `log_cv.csv`
 
-## Cross-Validation Results
+## Cross-Validation
 
 
-## Visualization
+## Visualization of Spatio-Temporal Data Augmentations
