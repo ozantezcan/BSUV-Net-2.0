@@ -4,6 +4,7 @@ python 3.6.9
 pytorch 1.3.0
 opencv 4.0.1
 
+
 ## Training the model
 argumnents
 

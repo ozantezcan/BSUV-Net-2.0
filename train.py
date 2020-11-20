@@ -120,7 +120,7 @@ if not os.path.exists(mdl_dir):
 crop_and_aug = [aug.RandomCrop(inp_size)]
 
 if aug_rsc:
-    crop_and_aug.append(aug.RandomJitteredCrop(inp_size, max_jitter, jitter_prop))
+    crop_and_aug.append(aug.RandomJitteredCrop(inp_size))
     
 if aug_ptz > 0:
     crop_and_aug.append(
@@ -160,7 +160,6 @@ if aug_ioa > 0:
         recent_bg=recent_bg,
         segmentation_ch=seg_ch,
         transforms=mask_transforms,
-        use_selected=200,
         multiplier=0,
         shuffle=True
         )

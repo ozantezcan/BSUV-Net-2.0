@@ -16,7 +16,7 @@ class CDNet2014Loader(data.Dataset):
     """
 
     def __init__(self, dataset, empty_bg="no", empty_win_len=0, recent_bg=False, segmentation_ch=False,
-                 use_selected=200, transforms=None, multiplier=16, shuffle=False):
+                 use_selected=0, transforms=None, multiplier=16, shuffle=False):
         """Initialization of data loader
         Args:
             :dataset (dict):                Dictionary of dataset. Keys are the categories (string),
