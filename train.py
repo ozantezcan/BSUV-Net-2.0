@@ -332,7 +332,7 @@ torch.save(model, "{}/model_last.mdl".format(mdl_dir))
 print('Finished Training')
 
 # Evaluation on test videos
-csv_path = "./log_cv.csv"
+csv_path = "./log.csv"
 logVideos(
     dataset_test, 
     model, 

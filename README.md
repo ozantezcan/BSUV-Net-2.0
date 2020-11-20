@@ -10,9 +10,9 @@ opencv 4.0.1
 3. [OpenCV 4.0.1](https://opencv.org/releases/)
 
 ## Dataset
-This repository includes a sampled version of the CDNet-2014 dataset with the following information. 
-* Frames (From [changedetection.net](https://www.changedetection.net/))
-* Ground truths (From [changedetection.net](https://www.changedetection.net/))
+This repository includes a sampled version of CDNet-2014 dataset with the following: 
+* Frames (From [changedetection.net](http://changedetection.net/))
+* Ground truths (From [changedetection.net](http://changedetection.net/))
 * Pre-computed recent background frames (Median of previous 30 frames)
 * Pre-selected empty background frames
 * Foreground probability maps (FPM) for all inputs (We used [DeepLab v3](https://github.com/tensorflow/models/tree/master/research/deeplab) for computing FPMs)
@@ -28,9 +28,11 @@ Training of BSUV-Net 2.0 on test_dataset:
 Training of Fast BSUV-Net 2.0 on test_dataset:
 `python train.py  --seg_ch 0 --set_number 5`
 
-These codes will save the perfomance of trained algorithm on the test dataset to `log_cv.csv`
+These codes will save the perfomance of trained algorithm on the test split specified in `configs/full_cv_config.py` to `log.csv`
 
 ## Cross-Validation
-
+In `log.cv`, we provide the performance results for all 4 folds of the proposed cross-validation on full dataset with BSUV-Net-2.0.
+Follow the steps in `notebooks/crossvalidation.ipynb` to analyze locally-computed cross-validation results.
 
 ## Visualization of Spatio-Temporal Data Augmentations
+Follow the steps in `notebooks/visualization.ipynb` to visualize spatio-temporaldata augmentations.

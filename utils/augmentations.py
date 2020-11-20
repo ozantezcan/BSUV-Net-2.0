@@ -363,8 +363,6 @@ class RandomMask:
             if self.debug:
                 print("Applying Random Masking")
             sent_to_bg = np.random.randint(2)
-            if self.debug:
-                print("Apply to BG") if sent_to_bg else print("Apply to FG")
             mask_inp, mask_label = next(iter(self.dataloader_mask))
             for inp_type, im in cd_inp.items():
                 if (not inp_type.startswith('empty_bg')) and (im is not None):
