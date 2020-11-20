@@ -19,7 +19,7 @@ import time
 
 parser = argparse.ArgumentParser(description='BSUV-Net-2.0 pyTorch')
 parser.add_argument('--network', metavar='Network', dest='network', type=str, default='unetvgg16',
-                    help='Which network to use: pspnet_resnet18, unetvgg16')
+                    help='Which network to use')
 
 # Input images
 parser.add_argument('--inp_size', metavar='Input Size', dest='inp_size', type=int, default=224,
@@ -27,9 +27,9 @@ parser.add_argument('--inp_size', metavar='Input Size', dest='inp_size', type=in
 parser.add_argument('--empty_bg', metavar='Empty Background Frame', dest='empty_bg', type=str, default='manual',
                     help='Which empty background to use? no, manual or automatic')
 parser.add_argument('--recent_bg', metavar='Recent Background Frame', dest='recent_bg', type=int, default=1,
-                    help='Use recent background frame as an input as well')
+                    help='Use recent background frame as an input as well. 0 or 1')
 parser.add_argument('--seg_ch', metavar='Segmentation', dest='seg_ch', type=int, default=1,
-                    help='Whether to use the segmentation results as input or not')
+                    help='Whether to use the FPM channel input or not. 0 or 1')
 
 # Optimization
 parser.add_argument('--lr', metavar='Learning Rate', dest='lr', type=float, default=1e-4,
@@ -46,12 +46,16 @@ parser.add_argument('--opt', metavar='Optimizer to be used', dest='opt', type=st
                     help='sgd, rmsprop or adam')
 
 # Data augmentations
-parser.add_argument('--aug_noise', metavar='Data Augmentationfor noise', dest='aug_noise', type=int, default=1)
-parser.add_argument('--aug_rsc', metavar='Data Augmentation for randomly-shifted crop', dest='aug_rsc', type=int, default=1)
-parser.add_argument('--aug_ptz', metavar='Data Augmentation for PTZ camera crop', dest='aug_ptz', type=int, default=1)
-parser.add_argument('--aug_id', metavar='Data Augmentation for Illumination Difference', dest='aug_id', type=int, default=1)
+parser.add_argument('--aug_noise', metavar='Data Augmentation for noise', dest='aug_noise', type=int, default=1,
+                    help='Whether to use Data Augmentation for noise. 0 or 1')
+parser.add_argument('--aug_rsc', metavar='Data Augmentation for randomly-shifted crop', dest='aug_rsc', type=int, default=1,
+                    help='Whether to use andomly-shifted crop. 0 or 1')
+parser.add_argument('--aug_ptz', metavar='Data Augmentation for PTZ camera crop', dest='aug_ptz', type=int, default=1,
+                    help='Whether to use PTZ camera crop 0 or 1')
+parser.add_argument('--aug_id', metavar='Data Augmentation for Illumination Difference', dest='aug_id', type=int, default=1,
+                    help='Whether to use Data Augmentation for Illumination Difference. 0 or 1')
 parser.add_argument('--aug_ioa', metavar='Data Augmentation for Intermittent Object Addition', dest='aug_ioa', type=float, default=0.1,
-                    help='Probability of applying IOA')
+                    help='Probability of applying Intermittent Object Addition')
 
 # Checkpoint
 parser.add_argument('--model_chk', metavar='Checkpoint for the model', dest='model_chk', type=str, default='',
