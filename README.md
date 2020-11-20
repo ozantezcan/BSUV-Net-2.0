@@ -13,9 +13,9 @@ This repository includes a sampled version of CDNet-2014 dataset with the follow
 * Pre-selected empty background frames
 * Foreground probability maps (FPM) for all inputs (We used [DeepLab v3](https://github.com/tensorflow/models/tree/master/research/deeplab) for computing FPMs)
 
-This dataset can be used to test the functions in this repository. Upon publication, we will publicly share the full dataset with all of these inputs.
+This dataset can be used to test the functions in this repository. Upon publication, we will publicly share the full dataset with all of these inputs as long the trained network weights.
 
-## Training the mode
+## Training and Validation
 `train.py` can be used for training BSUV-Net 2.0. Run `python train.py -h` for seeing the usage of arguments
 
 Training of BSUV-Net 2.0 on test_dataset: 
