@@ -16,7 +16,7 @@ class CDNet2014Loader(data.Dataset):
     """
 
     def __init__(self, dataset, empty_bg="no", empty_win_len=0, recent_bg=False, segmentation_ch=False,
-                 use_selected=0, transforms=None, multiplier=16, shuffle=False):
+                 use_selected=200, transforms=None, multiplier=16, shuffle=False):
         """Initialization of data loader
         Args:
             :dataset (dict):                Dictionary of dataset. Keys are the categories (string),
@@ -29,7 +29,7 @@ class CDNet2014Loader(data.Dataset):
                                             0 means median of all of the frames in the video
             :recent_bg (boolean):           Boolean for using the recent background frame
             :segmentation_ch (boolean):     Boolean for using the segmentation maps
-            :use_selected (int):            Number of selected frames to be used (50 por 200)
+            :use_selected (int):            Number of selected frames to be used (50 or 200)
             :transforms (torchvision.transforms):   Transforms to be applied to each input
             :multiplier (int):              Clip the outputs to be a multiple of multiplier. If 0 -> no clipping
             :shuffle (boolean):             Return shuffled elements with no end item

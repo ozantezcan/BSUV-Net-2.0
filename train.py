@@ -1,4 +1,5 @@
 #Imports
+
 import argparse
 import os
 import datetime
@@ -217,7 +218,7 @@ num_inp = ((1*(empty_bg != "no")) + (1*recent_bg) + 1)
 num_ch = num_inp * num_ch_per_inp
 
 if network == "unetvgg16":
-    model = unet_vgg16(inp_ch=num_ch, skip=0)
+    model = unet_vgg16(inp_ch=num_ch, skip=1)
 else:
     raise ValueError("network = {} is not defined".format(network))
 
@@ -276,6 +277,8 @@ for epoch in range(start_epoch, num_epochs):  # loop over the dataset multiple t
                 labels_1d, outputs_1d = losses.getValid(labels, outputs)
                 loss = loss_func(labels_1d, outputs_1d)
                 loss.backward()
+                optimizer.step()
+                optimizer.zero_grad()
             else:
                 with torch.no_grad():
                     # get the inputs; data is a list of [inputs, labels]
@@ -321,7 +324,7 @@ for epoch in range(start_epoch, num_epochs):  # loop over the dataset multiple t
         }
 
         torch.save(checkpoint, "{}/checkpoint.pth".format(mdl_dir))  
-        if (epoch + 1) % 5 == 0:
+        if (epoch + 1) % 20 == 0:
             torch.save(model, "{}/model_epoch{}.mdl".format(mdl_dir, epoch + 1))
 
         st = time.time()
