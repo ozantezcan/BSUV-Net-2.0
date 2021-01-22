@@ -2,13 +2,14 @@
 Configuration file for dataset paths
 """
 
-root_dir = "./test_dataset"
+root_dir = "./dataset"
 save_dir = "./saved_models"
 
 # Paths for the CDNet2014 images, their background frames, segmentation maps and ground truths
 current_fr_dir = "{}/currentFr/{{cat}}/{{vid}}/input".format(root_dir)
 current_fr_path = "{}/currentFr/{{cat}}/{{vid}}/input/in{{fr_id}}.jpg".format(root_dir)
 gt_path = "{}/currentFr/{{cat}}/{{vid}}/groundtruth/gt{{fr_id}}.png".format(root_dir)
+empty_bg_root = "{}/emptyBg/{{cat}}/{{vid}}".format(root_dir)
 empty_bg_path = "{}/emptyBg/{{cat}}/{{vid}}/empty_bg{{fr_id}}.jpg".format(root_dir)
 recent_bg_path = "{}/recentBg/{{cat}}/{{vid}}/recent_bg{{fr_id}}.jpg".format(root_dir)
 

@@ -96,10 +96,14 @@ class CDNet2014Loader(data.Dataset):
             empty_bg_fpm_path = data_config.empty_bg_fpm_path.format(
                 cat=cat, vid=vid, fr_id=str(fr_id).zfill(6))
             if not os.path.exists(empty_bg_path):
+                empty_bg_id = random.choice(
+                    os.listdir(
+                        data_config.empty_bg_root.format(cat=cat, vid=vid)
+                    ))[-10:-4] 
                 empty_bg_path = data_config.empty_bg_path.format(
-                    cat=cat, vid=vid, fr_id="000001")
+                    cat=cat, vid=vid, fr_id=empty_bg_id)
                 empty_bg_fpm_path = data_config.empty_bg_fpm_path.format(
-                    cat=cat, vid=vid, fr_id="000001")
+                    cat=cat, vid=vid, fr_id=empty_bg_id)
             if not os.path.exists(empty_bg_path):
                 raise("No empty BG found for {}/{}".format(cat, vid))
 

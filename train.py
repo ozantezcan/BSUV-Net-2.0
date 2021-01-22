@@ -335,6 +335,7 @@ torch.save(model, "{}/model_last.mdl".format(mdl_dir))
 print('Finished Training')
 
 # Evaluation on test videos
+model = torch.load("{}/model_best.mdl".format(mdl_dir)).cuda()
 csv_path = "./log.csv"
 logVideos(
     dataset_test, 

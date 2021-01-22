@@ -6,29 +6,21 @@
 3. [OpenCV 4.0.1](https://opencv.org/releases/)
 
 ## Dataset
-This repository includes a sampled version of CDNet-2014 dataset with the following: 
-* Frames (From [changedetection.net](http://changedetection.net/))
-* Ground truths (From [changedetection.net](http://changedetection.net/))
-* Pre-computed recent background frames (Median of previous 30 frames)
-* Pre-selected empty background frames
-* Foreground probability maps (FPM) for all inputs (We used [DeepLab v3](https://github.com/tensorflow/models/tree/master/research/deeplab) for computing FPMs)
+Steps for preparing CDNet2014
+1. Download the dataset from [changedetection.net](http://changedetection.net/) and unzip the contents in `./dataset`
 
-This dataset can be used to test the functions in this repository. Upon publication, we will publicly share the full dataset with all of these inputs as long the trained network weights.
+2. Download pre-computed empty and recent background frames with FPM images from https://drive.google.com/drive/folders/1fskxV1paCsoZvqTVLjnlAdPOCHk1_XmF?usp=sharing and place the contents in `./dataset`
 
-## Training and Validation
-`train.py` can be used for training BSUV-Net 2.0. Run `python train.py -h` for seeing the usage of arguments
+3. In the end, `.\dataset` folder should have the following subfolders: `currentFr`, `currentFrFpm`, `emptyBg`, `emptyBgFpm`, `recentBg`, `recentBgFpm`.
 
-Training of BSUV-Net 2.0 on test_dataset: 
-`python train.py  --set_number 5`
+## Cross-validation
 
-Training of Fast BSUV-Net 2.0 on test_dataset:
-`python train.py  --seg_ch 0 --set_number 5`
+1. Run `python train.py  --set_number <k>` for `<k> = 1, 2, 3 and 4` to compute the results for each fold. This code will save the results to `log.csv`.
 
-These codes will save the performance of the trained algorithm on the test split specified in `configs/full_cv_config.py` to `log.csv`
-
-## Cross-Validation
-In `log.cv`, we provide the performance results for all 4 folds of the proposed cross-validation on the full dataset with BSUV-Net-2.0.
-Follow the steps in `notebooks/crossvalidation.ipynb` to analyze locally-computed cross-validation results.
+2. Follow the steps in `notebooks/crossvalidation.ipynb` to analyze cross-validation results.
 
 ## Visualization of Spatio-Temporal Data Augmentations
 Follow the steps in `notebooks/visualization.ipynb` to visualize spatio-temporal data augmentations.
+
+## Training and Cross-Validation with other datasets.
+Change `./configs/data_config.py` and `./configs/full_cv_config.py` for different datasets.
