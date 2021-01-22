@@ -22,5 +22,9 @@ Steps for preparing CDNet2014
 ## Visualization of Spatio-Temporal Data Augmentations
 Follow the steps in `notebooks/visualization.ipynb` to visualize spatio-temporal data augmentations.
 
+## Inference on unseen video
+Use this repo for inference: [https://github.com/ozantezcan/BSUV-Net-inference]{https://github.com/ozantezcan/BSUV-Net-inference}
+
 ## Training and Cross-Validation with other datasets.
 Change `./configs/data_config.py` and `./configs/full_cv_config.py` for different datasets.
+
