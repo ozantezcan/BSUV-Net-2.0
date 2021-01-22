@@ -11,7 +11,7 @@ Steps for preparing CDNet2014
 
 2. Download pre-computed empty and recent background frames with FPM images from https://drive.google.com/drive/folders/1fskxV1paCsoZvqTVLjnlAdPOCHk1_XmF?usp=sharing and place the contents in `./dataset`
 
-3. In the end, `.\dataset` folder should have the following subfolders: `currentFr`, `currentFrFpm`, `emptyBg`, `emptyBgFpm`, `recentBg`, `recentBgFpm`.
+3. In the end, `./dataset` folder should have the following subfolders: `currentFr`, `currentFrFpm`, `emptyBg`, `emptyBgFpm`, `recentBg`, `recentBgFpm`.
 
 ## Cross-validation
 
