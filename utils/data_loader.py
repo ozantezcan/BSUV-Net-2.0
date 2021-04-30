@@ -29,7 +29,7 @@ class CDNet2014Loader(data.Dataset):
                                             0 means median of all of the frames in the video
             :recent_bg (boolean):           Boolean for using the recent background frame
             :segmentation_ch (boolean):     Boolean for using the segmentation maps
-            :use_selected (int):            Number of selected frames to be used (50 or 200)
+            :use_selected (int):            Number of selected frames to be used (None or 200)
             :transforms (torchvision.transforms):   Transforms to be applied to each input
             :multiplier (int):              Clip the outputs to be a multiple of multiplier. If 0 -> no clipping
             :shuffle (boolean):             Return shuffled elements with no end item
@@ -39,7 +39,7 @@ class CDNet2014Loader(data.Dataset):
             if use_selected == 200:
                 selected_frs_csv = data_config.selected_frs_200_csv
             else:
-                raise("Number of selected frames can be None, 50 or 200 but {} given".format(use_selected))
+                raise("Number of selected frames can be None or 200 but {} given".format(use_selected))
 
             with open(selected_frs_csv, "r") as f:
                 reader = csv.reader(f)
