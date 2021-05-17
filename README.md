@@ -4,6 +4,8 @@
 1. [Python 3.6.9](https://www.python.org/)
 2. [PyTorch 1.3](https://pytorch.org/)
 3. [OpenCV 4.0.1](https://opencv.org/releases/)
+4. [tensorboardX 2.2](https://github.com/lanpa/tensorboardX)
+5. [matplotlib](https://matplotlib.org/)
 
 ## Dataset
 Steps for preparing CDNet2014
