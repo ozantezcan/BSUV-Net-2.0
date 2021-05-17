@@ -24,7 +24,7 @@ parser.add_argument('--network', metavar='Network', dest='network', type=str, de
 
 # Input images
 parser.add_argument('--inp_size', metavar='Input Size', dest='inp_size', type=int, default=224,
-                    help='Size of the inputs. If equlas 0, use the original sized images. Assumes square sized input')
+                    help='Size of the inputs. If equals 0, use the original sized images. Assumes square sized input')
 parser.add_argument('--empty_bg', metavar='Empty Background Frame', dest='empty_bg', type=str, default='manual',
                     help='Which empty background to use? no, manual or automatic')
 parser.add_argument('--recent_bg', metavar='Recent Background Frame', dest='recent_bg', type=int, default=1,
@@ -50,7 +50,7 @@ parser.add_argument('--opt', metavar='Optimizer to be used', dest='opt', type=st
 parser.add_argument('--aug_noise', metavar='Data Augmentation for noise', dest='aug_noise', type=int, default=1,
                     help='Whether to use Data Augmentation for noise. 0 or 1')
 parser.add_argument('--aug_rsc', metavar='Data Augmentation for randomly-shifted crop', dest='aug_rsc', type=int, default=1,
-                    help='Whether to use andomly-shifted crop. 0 or 1')
+                    help='Whether to use randomly-shifted crop. 0 or 1')
 parser.add_argument('--aug_ptz', metavar='Data Augmentation for PTZ camera crop', dest='aug_ptz', type=int, default=1,
                     help='Whether to use PTZ camera crop 0 or 1')
 parser.add_argument('--aug_id', metavar='Data Augmentation for Illumination Difference', dest='aug_id', type=int, default=1,
@@ -67,7 +67,7 @@ parser.add_argument('--set_number', metavar='Which training-test split to use fr
                      type=int, default=1, help='Training and test videos will be selected based on the set number')
 
 # Model name
-parser.add_argument('--model_name', metavar='Nmae of the model for log keeping', dest='model_name',
+parser.add_argument('--model_name', metavar='Name of the model for log keeping', dest='model_name',
                      type=str, default='BSUV-Net 2.0', help='Name of the model to be used in output csv and checkpoints')
 
 args = parser.parse_args()
