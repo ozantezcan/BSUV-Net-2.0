@@ -39,9 +39,9 @@ class CDNet2014Loader(data.Dataset):
             if use_selected == 200:
                 selected_frs_csv = data_config.selected_frs_200_csv
             else:
-                raise("Number of selected frames can be None or 200 but {} given".format(use_selected))
+                raise(f"Number of selected frames can be None or 200 but {use_selected} given")
 
-            with open(selected_frs_csv, "r") as f:
+            with open(selected_frs_csv) as f:
                 reader = csv.reader(f)
                 selected_frs = list(reader)
 
@@ -56,10 +56,10 @@ class CDNet2014Loader(data.Dataset):
                     last_fr = int(sorted(glob.glob(os.path.join(data_config.current_fr_dir.format(cat=cat, vid=vid), "*.jpg")))[-1][-10:-4])
                     fr_ids = [idx for idx in range(1, last_fr+1)]
                 elif use_selected:
-                    fr_ids = catvid_to_selected_frs["{}/{}".format(cat, vid)]
+                    fr_ids = catvid_to_selected_frs[f"{cat}/{vid}"]
                 else:
                     roi_path = data_config.temp_roi_path.format(cat=cat, vid=vid)
-                    with open(roi_path, "r") as f:
+                    with open(roi_path) as f:
                         reader = csv.reader(f)
                         temp_roi = list(reader)
                     temp_roi = list(map(int, temp_roi[0][0].split()))
@@ -105,12 +105,12 @@ class CDNet2014Loader(data.Dataset):
                 empty_bg_fpm_path = data_config.empty_bg_fpm_path.format(
                     cat=cat, vid=vid, fr_id=empty_bg_id)
             if not os.path.exists(empty_bg_path):
-                raise("No empty BG found for {}/{}".format(cat, vid))
+                raise(f"No empty BG found for {cat}/{vid}")
 
             inp["empty_bg"] = self.__readRGB(empty_bg_path)
 
         elif self.empty_bg != "no":
-            raise ValueError("empty_bg should be no or manual; but given '{}'".format(self.empty_bg))
+            raise ValueError(f"empty_bg should be no or manual; but given '{self.empty_bg}'")
 
         if self.segmentation_ch and self.empty_bg != "no":
             inp["empty_bg_seg"] = self.__readGray(empty_bg_fpm_path)
@@ -150,11 +150,11 @@ class CDNet2014Loader(data.Dataset):
         return self.n_data
 
     def __readRGB(self, path):
-        assert os.path.exists(path), "{} does not exist".format(path)
+        assert os.path.exists(path), f"{path} does not exist"
         return cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB).astype(np.float)/255
 
     def __readGray(self, path):
-        assert os.path.exists(path), "{} does not exist".format(path)
+        assert os.path.exists(path), f"{path} does not exist"
         return np.expand_dims(cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2GRAY), -1).astype(np.float)/255
 
     def __selectrandom(self, arr):

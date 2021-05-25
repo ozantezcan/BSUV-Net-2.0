@@ -16,7 +16,7 @@ class UNetDown(nn.Module):
     """
     def __init__(self, in_ch, out_ch, num_rep, batch_norm=False, activation=nn.ReLU(), kernel_size=3,
                  dropout=False, maxpool=False):
-        super(UNetDown, self).__init__()
+        super().__init__()
         self.down_block = nn.Sequential()
 
         if maxpool:
@@ -52,7 +52,7 @@ class UNetUp(nn.Module):
     def __init__(self, in_ch, res_ch, out_ch, num_rep, batch_norm=False, activation=nn.ReLU(), kernel_size=3,
                  dropout=False):
 
-        super(UNetUp, self).__init__()
+        super().__init__()
         self.up = nn.Sequential()
         self.conv_block = nn.Sequential()
 
@@ -94,7 +94,7 @@ class ConvSig(nn.Module):
     """
 
     def __init__(self, in_ch):
-        super(ConvSig, self).__init__()
+        super().__init__()
         self.out = nn.Sequential()
         self.out.add_module("conv2d", nn.Conv2d(in_ch, 1, 1))
         self.out.add_module("sigmoid", nn.Sigmoid())
@@ -110,7 +110,7 @@ class FCNN(nn.Module):
     """
 
     def __init__(self, sizes):
-        super(FCNN, self).__init__()
+        super().__init__()
         self.fcnn = nn.Sequential()
         for k, (in_ch, out_ch) in enumerate(zip(sizes[:-2], sizes[1:-1])):
             self.fcnn.add_module("fc%d" %(k+1), nn.Linear(in_ch, out_ch))
