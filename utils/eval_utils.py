@@ -50,7 +50,7 @@ def evalVideo(cat, vid, model, empty_bg=False, recent_bg=False, segmentation_ch=
             model_name = model_name[:-9]
         if model_name.endswith("_autoBG"):
             model_name = model_name[:-7]
-        vid_path = os.path.join(data_config.save_dir, model_name, "{}_{}.mp4".format(cat, vid))
+        vid_path = os.path.join(data_config.save_dir, model_name, f"{cat}_{vid}.mp4")
         print(vid_path)
         vid = cv2.VideoWriter(vid_path, cv2.VideoWriter_fourcc(*'MP4V'), 30, (3*w+20, h))
 

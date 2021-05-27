@@ -110,7 +110,7 @@ else:
 print(f"Model started: {fname}")
 
 # Intialize Tensorboard
-writer = SummaryWriter("tb_runs/{}".format(fname))
+writer = SummaryWriter(f"tb_runs/{fname}")
 print("Initialized TB")
 
 mdl_dir = os.path.join(save_dir, fname)
@@ -217,7 +217,7 @@ num_ch = num_inp * num_ch_per_inp
 if network == "unetvgg16":
     model = unet_vgg16(inp_ch=num_ch, skip=1)
 else:
-    raise ValueError("network = {} is not defined".format(network))
+    raise ValueError(f"network = {network} is not defined")
 
 for p in model.parameters():
     p.requires_grad = True
@@ -239,9 +239,9 @@ if cuda:
     model = model.cuda()
 
 if model_chk:
-    chk_path = "{}/checkpoint.pth".format(mdl_dir)
-    assert os.path.isfile(chk_path), "No checkpoint is found in {}".format(chk_path)
-    print("=> loading checkpoint '{}'".format(model_chk))
+    chk_path = f"{mdl_dir}/checkpoint.pth"
+    assert os.path.isfile(chk_path), f"No checkpoint is found in {chk_path}"
+    print(f"=> loading checkpoint '{model_chk}'")
     checkpoint = torch.load(chk_path)
     start_epoch = checkpoint['epoch']
     model.load_state_dict(checkpoint['state_dict'])
@@ -305,13 +305,13 @@ for epoch in range(start_epoch, num_epochs):  # loop over the dataset multiple t
         print("::%s:: Epoch %d loss: %.1f, acc: %.3f, f_score: %.3f, lr x 1000: %.4f, elapsed time: %s" \
               % (phase, epoch + 1, epoch_loss, epoch_acc, epoch_f, current_lr*1000, (time.time() - st)))
 
-        writer.add_scalar("{}/loss".format(phase), epoch_loss, epoch)
-        writer.add_scalar("{}/acc".format(phase), epoch_acc, epoch)
-        writer.add_scalar("{}/f".format(phase), epoch_f, epoch)
+        writer.add_scalar(f"{phase}/loss", epoch_loss, epoch)
+        writer.add_scalar(f"{phase}/acc", epoch_acc, epoch)
+        writer.add_scalar(f"{phase}/f", epoch_f, epoch)
 
         if phase.startswith("Test"):
             best_f = epoch_f
-            torch.save(model, "{}/model_best.mdl".format(mdl_dir))
+            torch.save(model, f"{mdl_dir}/model_best.mdl")
 
         # Save the checkpoint
         checkpoint = {
@@ -320,19 +320,19 @@ for epoch in range(start_epoch, num_epochs):  # loop over the dataset multiple t
             "optimizer": optimizer.state_dict()
         }
 
-        torch.save(checkpoint, "{}/checkpoint.pth".format(mdl_dir))  
+        torch.save(checkpoint, f"{mdl_dir}/checkpoint.pth")  
         if (epoch + 1) % 20 == 0:
-            torch.save(model, "{}/model_epoch{}.mdl".format(mdl_dir, epoch + 1))
+            torch.save(model, f"{mdl_dir}/model_epoch{epoch + 1}.mdl")
 
         st = time.time()
 
 # save the last model
-torch.save(model, "{}/model_last.mdl".format(mdl_dir))
+torch.save(model, f"{mdl_dir}/model_last.mdl")
 
 print('Finished Training')
 
 # Evaluation on test videos
-model = torch.load("{}/model_best.mdl".format(mdl_dir)).cuda()
+model = torch.load(f"{mdl_dir}/model_best.mdl").cuda()
 csv_path = "./log.csv"
 logVideos(
     dataset_test, 

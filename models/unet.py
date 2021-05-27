@@ -12,7 +12,7 @@ class unet_vgg16(nn.Module):
         skip (bool, default=True): Use skip connections
     """
     def __init__(self, inp_ch, kernel_size=3, skip=True):
-        super(unet_vgg16, self).__init__()
+        super().__init__()
         self.skip = skip
         self.enc1 = UNetDown(inp_ch, 64, 2, batch_norm=True, maxpool=False, kernel_size=kernel_size)
         self.enc2 = UNetDown(64, 128, 2, batch_norm=True, maxpool=True, kernel_size=kernel_size)

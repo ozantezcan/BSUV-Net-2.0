@@ -6,22 +6,22 @@ root_dir = "./dataset"
 save_dir = "./saved_models"
 
 # Paths for the CDNet2014 images, their background frames, segmentation maps and ground truths
-current_fr_dir = "{}/currentFr/{{cat}}/{{vid}}/input".format(root_dir)
-current_fr_path = "{}/currentFr/{{cat}}/{{vid}}/input/in{{fr_id}}.jpg".format(root_dir)
-gt_path = "{}/currentFr/{{cat}}/{{vid}}/groundtruth/gt{{fr_id}}.png".format(root_dir)
-empty_bg_root = "{}/emptyBg/{{cat}}/{{vid}}".format(root_dir)
-empty_bg_path = "{}/emptyBg/{{cat}}/{{vid}}/empty_bg{{fr_id}}.jpg".format(root_dir)
-recent_bg_path = "{}/recentBg/{{cat}}/{{vid}}/recent_bg{{fr_id}}.jpg".format(root_dir)
+current_fr_dir = f"{root_dir}/currentFr/{{cat}}/{{vid}}/input"
+current_fr_path = f"{root_dir}/currentFr/{{cat}}/{{vid}}/input/in{{fr_id}}.jpg"
+gt_path = f"{root_dir}/currentFr/{{cat}}/{{vid}}/groundtruth/gt{{fr_id}}.png"
+empty_bg_root = f"{root_dir}/emptyBg/{{cat}}/{{vid}}"
+empty_bg_path = f"{root_dir}/emptyBg/{{cat}}/{{vid}}/empty_bg{{fr_id}}.jpg"
+recent_bg_path = f"{root_dir}/recentBg/{{cat}}/{{vid}}/recent_bg{{fr_id}}.jpg"
 
-current_fr_fpm_path = "{}/currentFrFpm/{{cat}}/{{vid}}/fpm{{fr_id}}.jpg".format(root_dir)
-empty_bg_fpm_path = "{}/emptyBgFpm/{{cat}}/{{vid}}/fpm{{fr_id}}.jpg".format(root_dir)
-recent_bg_fpm_path = "{}/recentBgFpm/{{cat}}/{{vid}}/fpm{{fr_id}}.jpg".format(root_dir)
+current_fr_fpm_path = f"{root_dir}/currentFrFpm/{{cat}}/{{vid}}/fpm{{fr_id}}.jpg"
+empty_bg_fpm_path = f"{root_dir}/emptyBgFpm/{{cat}}/{{vid}}/fpm{{fr_id}}.jpg"
+recent_bg_fpm_path = f"{root_dir}/recentBgFpm/{{cat}}/{{vid}}/fpm{{fr_id}}.jpg"
 
 # Directory for the selected background frames
-selected_frs_200_csv = "{}/CDNET2014_selected_frames_200.csv".format(root_dir)
+selected_frs_200_csv = f"{root_dir}/CDNET2014_selected_frames_200.csv"
 
 # Path to the temp roi file
-temp_roi_path = "{}/currentFr/{{cat}}/{{vid}}/temporalROI.txt".format(root_dir)
+temp_roi_path = f"{root_dir}/currentFr/{{cat}}/{{vid}}/temporalROI.txt"
 
 # Locations of each video in the CSV file
 csv_header2loc = {'len': 160, 'highway': 1, 'pedestrians': 4, 'office': 7, 'PETS2006': 10, 'badminton': 13, 'traffic': 16,
