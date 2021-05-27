@@ -2,9 +2,6 @@
 
 import argparse
 import os
-import datetime
-import random
-from copy import deepcopy
 import configs.data_config as data_config
 import configs.full_cv_config as tr_test_config
 import torch
