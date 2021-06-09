@@ -7,7 +7,7 @@ from torch.nn import functional as F
 
 
 def getValid(true, pred, nonvalid=-1):
-    """ On CDNEt dataset, the frmaes are not fully labeled. Only some predefined region of them are labeled.
+    """ On CDNEt dataset, the frames are not fully labeled. Only some predefined region of them are labeled.
     This function extracts the labeled part from ground truth and the corresponding part from prediction as  1-D tensors
     Args:
         true (tensor): Ground truth tensor of shape Bx1xHxW
@@ -18,16 +18,6 @@ def getValid(true, pred, nonvalid=-1):
         (tensor): 1-D tensor containing the valid pixels of ground truth
         (tensor): 1-D tensor of prediction corresponding the valid ground truth pixels
     """
-    """# Turn predictions and labels into 1D arrays
-    true_valid = true.reshape(-1)
-    pred_valid = pred.reshape(-1)
-
-    # Mask of the known parts of the ground truth
-    mask =  torch.where(true_valid==nonvalid, torch.tensor(0), torch.tensor(1)).type(torch.bool)
-
-    # Discard the unknown parts from the predictions and labels
-    return torch.masked_select(true_valid, mask), torch.masked_select(pred_valid, mask)"""
-
     # Turn predictions and labels into 1D arrays
     true_valid = true.reshape(-1)
     pred_valid = pred.reshape(-1)

@@ -131,18 +131,23 @@ class CDNet2014Loader(data.Dataset):
 
         label = self.__readGray(data_config.gt_path\
                                 .format(cat=cat, vid=vid, fr_id=str(fr_id).zfill(6)))
-        # reformat label such that FG=1, BG=0, everything else = -1
-        label[np.abs(label-0.5) < 0.45] = -1
+        
 
         for transform_arr in self.transforms:
             if len(transform_arr) > 0:
                 inp, label = self.__selectrandom(transform_arr)(inp, label)
+
 
         if(self.multiplier > 0):
             c, h, w = label.shape
             h_valid = int(h/self.multiplier)*self.multiplier
             w_valid = int(w/self.multiplier)*self.multiplier
             inp, label = inp[:, :h_valid, :w_valid], label[:, :h_valid, :w_valid]
+
+        # reformat label such that FG=1, BG=0, everything else = -1
+        label[label <= 0.05] = 0 # BG
+        label[np.abs(label-0.5) < 0.45] = -1
+        label[label >= 0.95] = 1 # FG
 
         return inp, label
 
