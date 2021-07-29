@@ -9,7 +9,7 @@
 
 ## Dataset
 Steps for preparing CDNet2014
-1. Download the dataset from [changedetection.net](http://changedetection.net/) and unzip the contents in `./dataset`
+1. Download the dataset from [changedetection.net](http://changedetection.net/) and unzip the contents in `./dataset/currentFr`
 
 2. Download pre-computed empty and recent background frames with FPM images from [Google Drive](https://drive.google.com/drive/folders/1fskxV1paCsoZvqTVLjnlAdPOCHk1_XmF?usp=sharing) and place the contents in `./dataset`
 
